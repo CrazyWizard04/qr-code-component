@@ -13,14 +13,16 @@
     --color-slate-900: hsl(218, 44%, 22%);
     --color-white: hsl(0, 0%, 100%);
     --spacing: 0.25rem;
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
+    --text-base: 0.9375rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --font-weight-normal: 400;
     --font-weight-bold: 700;
-    --radius-2xl: 1rem;
+    --radius-xl: 0.75rem;
+    --radius-3xl: 1.5rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --text-heading: 1.36rem;
     --font-outfit: "Outfit", sans-serif;
-    --text-paragraph: 15px;
     --animate-slide-in: slide-in 0.5s ease-out;
   }
 }
@@ -186,44 +188,52 @@
     font-family: var(--font-outfit);
   }
   body {
-    display: flex;
+    display: grid;
     min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+    place-content: center;
     background-color: var(--color-slate-300);
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-slate-500);
   }
-  article {
+  main {
     display: flex;
-    max-width: 350px;
+    max-width: 20rem;
     animation: var(--animate-slide-in);
     flex-direction: column;
-    gap: calc(var(--spacing) * 4);
-    border-radius: var(--radius-2xl);
+    gap: calc(var(--spacing) * 6);
+    border-radius: var(--radius-3xl);
     background-color: var(--color-white);
     padding: calc(var(--spacing) * 4);
+  }
+}
+@layer components {
+  .qr-code {
+    width: 100%;
+    border-radius: var(--radius-xl);
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 4);
+    padding-inline: calc(var(--spacing) * 5);
+    padding-block: calc(var(--spacing) * 0);
     text-align: center;
   }
-  article img {
-    width: 100%;
-    border-radius: var(--radius-2xl);
-  }
-  article h1 {
-    padding-inline: calc(var(--spacing) * 4);
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-    --tw-leading: calc(var(--spacing) * 6.5);
-    line-height: calc(var(--spacing) * 6.5);
+  .heading {
+    font-size: var(--text-heading);
+    --tw-leading: 1.2;
+    line-height: 1.2;
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
     color: var(--color-slate-900);
   }
-  article p {
+  .paragraph {
     margin-bottom: calc(var(--spacing) * 5);
-    padding-inline: calc(var(--spacing) * 5);
-    font-size: var(--text-paragraph);
-    --tw-leading: calc(var(--spacing) * 5);
-    line-height: calc(var(--spacing) * 5);
-    color: var(--color-slate-500);
+    --tw-leading: 1.4;
+    line-height: 1.4;
   }
 }
 @keyframes slide-in {
@@ -236,19 +246,19 @@
     translate: 0;
   }
 }
-@property --tw-leading {
+@property --tw-font-weight {
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
+@property --tw-leading {
   syntax: "*";
   inherits: false;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-leading: initial;
       --tw-font-weight: initial;
+      --tw-leading: initial;
     }
   }
 }

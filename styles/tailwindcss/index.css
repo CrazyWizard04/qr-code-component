@@ -7,8 +7,10 @@
   --color-slate-500: hsl(216, 15%, 48%);
   --color-slate-900: hsl(218, 44%, 22%);
 
+  --text-base: 0.9375rem;
+  --text-heading: 1.36rem;
+
   --font-outfit: "Outfit", sans-serif;
-  --text-paragraph: 15px;
   --animate-slide-in: slide-in 0.5s ease-out;
 }
 
@@ -18,23 +20,29 @@
   }
 
   body {
-    @apply min-h-screen flex items-center justify-center bg-slate-300;
+    @apply min-h-screen grid place-content-center text-base font-normal text-slate-500 bg-slate-300;
   }
 
-  article {
-    @apply bg-white max-w-[350px] p-4 rounded-2xl text-center flex flex-col gap-4 animate-slide-in;
+  main {
+    @apply max-w-[20rem] p-4 rounded-3xl bg-white flex flex-col gap-6 animate-slide-in;
+  }
+}
+
+@layer components {
+  .qr-code {
+    @apply w-full rounded-xl;
   }
 
-  article img {
-    @apply w-full rounded-2xl;
+  .info {
+    @apply flex flex-col gap-4 px-5 py-0 text-center;
   }
 
-  article h1 {
-    @apply text-slate-900 text-2xl font-bold leading-6.5 px-4;
+  .heading {
+    @apply text-slate-900 text-heading font-bold leading-[1.2];
   }
 
-  article p {
-    @apply text-slate-500 text-paragraph leading-5 px-5 mb-5;
+  .paragraph {
+    @apply leading-[1.4] mb-5;
   }
 }
 
