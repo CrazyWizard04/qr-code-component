@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-white: hsl(0, 0%, 100%);
+  --color-slate-300: hsl(212, 45%, 89%);
+  --color-slate-500: hsl(216, 15%, 48%);
+  --color-slate-900: hsl(218, 44%, 22%);
+
+  --text-normal: 0.9375rem;
+  --text-heading: 1.35rem;
+
+  --font-outfit: "Outfit", sans-serif;
+  --animate-slide-in: slide-in 0.5s ease-out;
+}
+
+@layer base {
+  *, *::before, *::after {
+    @apply p-0 m-0 box-border;
+  }
+
+  body {
+    @apply min-h-screen grid place-content-center px-20 py-8 bg-slate-300 font-outfit text-normal font-normal text-slate-500;
+  }
+}
+
+@layer components {
+  .card {
+    @apply max-w-[20rem] p-4 rounded-3xl bg-white flex flex-col gap-6 animate-slide-in;
+  }
+
+  .qr-code {
+    @apply w-full rounded-xl;
+  }
+
+  .card-info {
+    @apply flex flex-col gap-4 px-5 py-0 text-center;
+  }
+
+  .heading {
+    @apply text-slate-900 text-heading font-bold leading-[1.2];
+  }
+
+  .paragraph {
+    @apply mb-5 leading-[1.4];
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    translate: 0 50px;
+  }
+  100% {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-container {
+    @apply animate-none;
+  }
+}
+
